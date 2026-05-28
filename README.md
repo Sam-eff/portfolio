@@ -34,9 +34,11 @@ The `public/_headers` file adds basic security headers and cache rules.
 Copy `.env.example` and set the values in Cloudflare Pages:
 
 ```bash
-VITE_SITE_URL=https://samueleffiong.com
+VITE_SITE_URL=https://your-cloudflare-project.pages.dev
 VITE_API_BASE_URL=
 VITE_EMAILJS_SERVICE_ID=
 VITE_EMAILJS_TEMPLATE_ID=
 VITE_EMAILJS_PUBLIC_KEY=
 ```
+
+Use your Cloudflare Pages default domain for `VITE_SITE_URL` until you add a custom domain.
