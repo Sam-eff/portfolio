@@ -3,8 +3,23 @@ import { resolve } from 'node:path';
 
 const distDir = resolve(process.cwd(), 'dist');
 const routes = ['/', '/about', '/portfolio', '/contact'];
-const envSiteUrl = process.env.VITE_SITE_URL?.trim();
 const fallbackSiteUrl = 'http://localhost:4173';
+
+const readEnvFileValue = (key) => {
+  const envPath = resolve(process.cwd(), '.env');
+
+  if (!existsSync(envPath)) return '';
+
+  const line = readFileSync(envPath, 'utf8')
+    .split(/\r?\n/)
+    .find((entry) => entry.trim().startsWith(`${key}=`));
+
+  if (!line) return '';
+
+  return line.slice(line.indexOf('=') + 1).trim().replace(/^['"]|['"]$/g, '');
+};
+
+const envSiteUrl = (process.env.VITE_SITE_URL || readEnvFileValue('VITE_SITE_URL')).trim();
 
 if (!envSiteUrl && process.env.CF_PAGES) {
   throw new Error('VITE_SITE_URL is required for Cloudflare Pages builds.');
