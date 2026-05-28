@@ -24,7 +24,7 @@ Use these settings:
 - Build command: `npm run build`
 - Build output directory: `dist`
 - Node version: `20.19.0` or newer
-- Root directory: `frontend` if Cloudflare is connected to the repository root
+- Root directory: leave blank. This GitHub repository already uses the frontend folder as its root.
 
 The `public/_redirects` file handles SPA deep links like `/about` and `/portfolio`.
 The `public/_headers` file adds basic security headers and cache rules.
