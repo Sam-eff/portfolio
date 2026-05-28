@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-base: #060D1A;
+    --bg-card: #0C1524;
+    --bg-border: #1A2740;
+    --brand-blue: #007BFF;
+    --brand-cyan: #00E5FF;
+    --text-primary: #F1F5F9;
+    --text-secondary: #8892A4;
+    --text-muted: #4A5568;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: rgba(0, 123, 255, 0.3);
+    color: #fff;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-base);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--bg-border);
+    border-radius: 99px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--brand-blue);
+  }
+}
+
+@layer utilities {
+  /* Accent gradient text */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Primary CTA button */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm
+           transition-all duration-200;
+    background: linear-gradient(135deg, var(--brand-blue), var(--brand-cyan));
+    color: #fff;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.25);
+  }
+
+  .btn-primary:hover {
+    box-shadow: 0 0 32px rgba(0, 229, 255, 0.35);
+    transform: translateY(-1px);
+  }
+
+  /* Ghost button */
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm
+           transition-all duration-200 border;
+    border-color: var(--bg-border);
+    color: var(--text-secondary);
+  }
+
+  .btn-ghost:hover {
+    border-color: var(--brand-cyan);
+    color: var(--text-primary);
+  }
+
+  /* Card surface */
+  .card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--bg-border);
+    @apply rounded-xl;
+  }
+
+  .card:hover {
+    border-color: rgba(0, 229, 255, 0.2);
+  }
+
+  /* Eyebrow label (section badge) */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest;
+    color: var(--brand-cyan);
+  }
+
+  /* Thin accent line */
+  .accent-line {
+    height: 2px;
+    width: 40px;
+    background: linear-gradient(90deg, var(--brand-blue), var(--brand-cyan));
+    border-radius: 99px;
+  }
+
+  /* Subtle hero glow (used once, in Hero) */
+  .hero-glow {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 123, 255, 0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 80% 20%, rgba(0, 229, 255, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Section padding */
+  .section-padding {
+    @apply py-24 px-6;
+  }
+
+  /* Input style */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg text-sm outline-none transition-all duration-200;
+    background-color: var(--bg-card);
+    border: 1px solid var(--bg-border);
+    color: var(--text-primary);
+  }
+
+  .form-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-input:focus {
+    border-color: var(--brand-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.12);
+  }
+}
